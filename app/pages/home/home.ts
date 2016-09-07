@@ -13,6 +13,8 @@ export class HomePage {
 
   public loggedIn: boolean = true;
 
+  private data:string = "This is a string send to the next view";
+
   public doStuff()
   {
     // code that ony logged in users are allowed to execute
@@ -23,6 +25,6 @@ export class HomePage {
   public doLogin()
   {
     console.log("login clicked");
-    this.navCtrl.push(CredentialsPage);
+    this.navCtrl.push(CredentialsPage, this.data);
   }
 }

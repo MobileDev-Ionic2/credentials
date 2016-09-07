@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
 
 /*
   Generated class for the CredentialsPage page.
@@ -12,9 +14,15 @@ import { NavController } from 'ionic-angular';
 })
 export class CredentialsPage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, navParams:NavParams, alertCtrl: AlertController)
+  {
+    this.alertCtrl = alertCtrl
+    this.data = navParams.data;
   }
+
+  private alertCtrl;
+
+  private data;
 
   doCancel()
   {
@@ -24,5 +32,14 @@ export class CredentialsPage {
   onPageDidEnter()
   {
     console.log("lifecycle event: entered credential page");
+
+    let alert = this.alertCtrl.create({
+    title: 'params data',
+    subTitle: this.data,
+    buttons: ['Dismiss']
+    });
+  
+    alert.present();
+
   }
 }
